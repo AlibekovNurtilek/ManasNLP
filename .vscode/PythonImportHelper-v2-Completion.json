@@ -1,0 +1,72 @@
+[
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "conllu_to_csv",
+        "kind": 2,
+        "importPath": "bin.conllu_to_csv",
+        "description": "bin.conllu_to_csv",
+        "peekOfCode": "def conllu_to_csv(conllu_file, csv_file):\n    with open(conllu_file, 'r', encoding='utf-8') as infile, open(csv_file, 'w', encoding='utf-8', newline='') as outfile:\n        writer = csv.writer(outfile)\n        # Заголовки для CSV (на основе CoNLL-U)\n        headers = ['ID', 'FORM', 'LEMMA', 'UPOS', 'XPOS', 'FEATS', 'HEAD', 'DEPREL', 'DEPS', 'MISC']\n        writer.writerow(headers)\n        for line in infile:\n            line = line.strip()\n            if not line or line.startswith('#'):\n                continue  # Игнорируем комментарии и пустые строки",
+        "detail": "bin.conllu_to_csv",
+        "documentation": {}
+    },
+    {
+        "label": "merge_conllu_files_with_updated_ids",
+        "kind": 2,
+        "importPath": "bin.extract_unique_xpos",
+        "description": "bin.extract_unique_xpos",
+        "peekOfCode": "def merge_conllu_files_with_updated_ids(file1_path, file2_path, output_path):\n    current_sent_id = 1  # Начинаем нумерацию с 1\n    with open(file1_path, 'r', encoding='utf-8') as f1, open(file2_path, 'r', encoding='utf-8') as f2, open(output_path, 'w', encoding='utf-8') as out:\n        for file in (f1, f2):\n            for line in file:\n                if line.startswith(\"# sent_id\"):  \n                    out.write(f\"# sent_id = {current_sent_id}\\n\")\n                    current_sent_id += 1\n                else:\n                    out.write(line)",
+        "detail": "bin.extract_unique_xpos",
+        "documentation": {}
+    },
+    {
+        "label": "list_of_files",
+        "kind": 5,
+        "importPath": "files_template",
+        "description": "files_template",
+        "peekOfCode": "list_of_files = [\n    \".github/workflows/.gitkeep\",\n    \"bin/__init__.py\"\n    \"src/__init__.py\",\n    \"src/conponents/__init__.py\",\n    \"src/utils/__init__.py\",\n    \"src/utils/common.py\",\n    \"src/logging/__init__.py\",\n    \"src/config/__init__.py\",\n    \"src/config/configuration.py\",",
+        "detail": "files_template",
+        "documentation": {}
+    }
+]
